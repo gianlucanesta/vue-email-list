@@ -8,18 +8,25 @@ const app = new Vue (
     {
         el:'#root',
         data: {
-            randomEmail: null,
+            emails:[],
         },
         methods: {
-            
+            getRandomEmail: function () {
+                axios
+                .get(
+                    'https://flynn.boolean.careers/exercises/api/random/mail', 
+                )
+                .then((response) => {
+                    const randEmail = response.data.response;
+                    this.emails.push(randEmail);
+                });
+            }
         },
         created: function() {
-                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-                .then((response) => {
-                    const serverRandomEmail = response.data.response;
-                    this.randomEmail = serverRandomEmail;
-                    // console.log(response.data.response);
-                });
+                for(let index = 0; index < 10; index++) {
+                    this.getRandomEmail();
+                }
+                
         }
     }
 );

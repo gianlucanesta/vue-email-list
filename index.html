@@ -16,9 +16,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+
+    
     <div id="root">
-        <h1> {{randomEmail}}</h1>
+        <ol>
+            <li v-for="email in emails"> {{email}} </li>
+        </ol>
     </div>
+
+
+
 
     <!-- VueJS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
